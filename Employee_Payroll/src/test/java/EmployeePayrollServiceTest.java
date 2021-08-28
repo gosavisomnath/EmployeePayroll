@@ -10,6 +10,14 @@ public class EmployeePayrollServiceTest {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService();
         List<EmployeePayroll> employeePayrolls = employeePayrollService.readEmployeePayrollData();
         Assertions.assertEquals(3, employeePayrolls.size());
+    } @Test
+    public void givenEmployeePayrollUpdateDetails_whenUpdated_shouldMatch() {
+        EmployeePayrollService  employeePayrollService= new EmployeePayrollService();
+        List<EmployeePayroll> employeePayrolls = employeePayrollService.readEmployeePayrollData();
+        boolean result=employeePayrollService.updateSalary("soma",360.0);
+        Assertions.assertTrue(result);
+
     }
+
 
 }

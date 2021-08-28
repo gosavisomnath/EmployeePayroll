@@ -33,4 +33,18 @@ public class EmployeePayrollServiceDB {
         System.out.println("Connection to the Database Successful : " + connection);
         return connection;
     }
+    public boolean updateEmployeeDataUsingStatement(String name, Double salary) {
+
+        String sql = String.format("update employee_payroll set salary = %.2f where name = '%s';", salary, name);
+        try(Connection connection = this.getConnection()){
+
+            Statement statement = connection.createStatement();
+            int result= statement.executeUpdate(sql);
+            if (result==1)
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

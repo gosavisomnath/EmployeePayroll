@@ -6,12 +6,13 @@ public class EmployeePayrollService {
 
     List<EmployeePayroll> employeePayrolls;
 
+
     public List<EmployeePayroll> readEmployeePayrollData() {
         return new EmployeePayrollServiceDB().readData();
     }
 
     public enum IOService {
-        FILE_IO,DB_IO,CONSOLE_IO,REST_IO
+        FILE_IO, DB_IO, CONSOLE_IO, REST_IO
     }
 
     public EmployeePayrollService() {
@@ -19,7 +20,7 @@ public class EmployeePayrollService {
     }
 
     public EmployeePayrollService(List<EmployeePayroll> employeePayrolls) {
-        this.employeePayrolls =employeePayrolls;
+        this.employeePayrolls = employeePayrolls;
     }
 
     public static void main(String[] args) {
@@ -49,9 +50,16 @@ public class EmployeePayrollService {
         obj.setName(empName);
         obj.setSalary(salary);
         employeePayrolls.add(obj);*/
-
-
     }
+
+    public boolean updateSalary(String name, double salary) {
+        EmployeePayrollServiceDB employeePayrollDBService = new EmployeePayrollServiceDB();
+        boolean result = employeePayrollDBService.updateEmployeeDataUsingStatement(name, salary);
+        return result;
+    }
+
+
+
 
 
 }
